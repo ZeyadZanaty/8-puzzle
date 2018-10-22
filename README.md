@@ -1,2 +1,2 @@
 # 8-puzzle
-8-puzzle ai using DFS, BFS, A*
+8-puzzle AI search agent using DFS, BFS, A*
