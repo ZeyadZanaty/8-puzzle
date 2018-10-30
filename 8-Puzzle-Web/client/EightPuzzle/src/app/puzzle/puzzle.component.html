@@ -1,0 +1,41 @@
+<div class="main">
+  <h2 style="margin-left:22%;">8-Puzzle Solver</h2>
+  <div style="margin:10px; margin-top:15px; display:inline-grid;">
+    <label style="display:block; text-align:center; color:transparent;" for="n">~</label>
+    <button id="n" (click)="shuffle()" pButton type="button" label="Shuffle" class="ui-button-danger"></button>
+  </div>
+<div style="margin:10px; display:inline-grid;">
+<label style="display:block; text-align:center;" for="state">Initial State</label>
+<p-inputMask id="state" [(ngModel)]="state" mask="9,9,9,9,9,9,9,9,9"></p-inputMask>
+</div>
+<div style="margin:10px; display:inline-grid;">
+<label style="display:block; text-align:center;" for="algo">Algorithm</label>
+<p-selectButton id="algo" [options]="algos" [(ngModel)]="algorithm"></p-selectButton>
+</div>
+<div style="margin:10px; margin-top:15px; display:inline-grid;">
+  <label style="display:block; text-align:center; color:transparent;" for="n">~</label>
+  <button id="n" (click)="solvePuzzle()" pButton type="button" label="Solve" class="ui-button-success"></button>
+</div>
+<div *ngIf="algorithm=='a_star'" style="margin-left:21%; display:block; margin-bottom:-20px;">
+<label style="margin-left:12%; display:flex" for="h">Heuristic</label>
+<p-selectButton id="h" [options]="heuristics" [(ngModel)]="heuristic"></p-selectButton>
+</div>
+</div>
+<div class="board">
+  <div class="tile"  *ngFor="let s of tiles_state" >
+    <app-tile (click)="onClick(s)" [number]="s"></app-tile>
+    </div>
+    <div class="result" *ngIf="result">
+    <h4>Simulation speed: {{speed*10}}</h4>
+    <p-slider class="slider" [(ngModel)]="speed" [style]="{'width':'21em'}" [animate]="true"></p-slider>
+    <button (click)="runAnimation()" pButton type="button" label="Run" class="ui-button-success anime"></button>
+    </div>
+</div>
+<p-blockUI [blocked]="blocked">
+  <div style="text-align:center; margin-top:10%;">
+  <h4 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Searching for a solution</h4>
+  <p-progressSpinner></p-progressSpinner>
+  <br>
+  <button (click)="blocked=false" pButton type="button" label="Unblock" class="ui-button-primary"></button>
+  </div>
+</p-blockUI>

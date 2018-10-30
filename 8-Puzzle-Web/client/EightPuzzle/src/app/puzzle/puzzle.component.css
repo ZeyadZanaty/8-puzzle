@@ -1,0 +1,27 @@
+.main{
+margin-top:3%;
+margin-left: 26%;
+margin-right: 10%;
+position: relative;
+}
+.board{
+  display:block;
+  width: 300px;
+  height: 300px;
+  margin-top: 5%;
+  margin-left: 37%;
+  position: relative;
+
+}
+.tile{
+width: 100px;
+height: 100px;
+display: inline-block;
+}
+.result{
+  margin-top:10%;
+}
+.anime{
+  margin-top:5%;
+  margin-left:40%;
+}
